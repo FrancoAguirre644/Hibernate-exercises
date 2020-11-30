@@ -4,9 +4,13 @@ public class Cliente extends Persona {
 
 	private boolean activo;
 
-	public Cliente(String nombre, String apellido, long dni, boolean activo) {
+	public Cliente() {
+		super();
+	}
+
+	public Cliente(String nombre, String apellido, long dni) {
 		super(nombre, apellido, dni);
-		this.activo = activo;
+		this.activo = true;
 	}
 
 	public boolean isActivo() {

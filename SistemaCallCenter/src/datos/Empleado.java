@@ -4,6 +4,10 @@ public class Empleado extends Persona {
 
 	private int sueldoBase;
 
+	public Empleado() {
+		super();
+	}
+
 	public Empleado(String nombre, String apellido, long dni, int sueldoBase) {
 		super(nombre, apellido, dni);
 		this.sueldoBase = sueldoBase;

@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -44,6 +46,20 @@ public class PersonaDao {
 		}
 
 		return persona;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Persona> traer() {
+		List<Persona> personas = null;
+
+		try {
+			iniciarOperacion();
+			personas = session.createQuery("from Persona p order by p.apellido").list();
+		} finally {
+			session.close();
+		}
+
+		return personas;
 	}
 
 }
