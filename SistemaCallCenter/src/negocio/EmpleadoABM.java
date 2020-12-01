@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import dao.EmpleadoDao;
 import dao.PersonaDao;
 import datos.Empleado;
@@ -17,6 +19,10 @@ public class EmpleadoABM {
 			instanciaEmpleadoABM = new EmpleadoABM();
 		}
 		return instanciaEmpleadoABM;
+	}
+
+	public List<Empleado> traer() {
+		return EmpleadoDao.getInstanciaEmpleadoDao().traer();
 	}
 
 	public int agregar(String nombre, String apellido, long dni, int sueldoBase) throws Exception {

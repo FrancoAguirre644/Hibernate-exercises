@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -31,6 +33,20 @@ public class EmpleadoDao {
 	private void manejaException(HibernateException he) throws HibernateException {
 		tx.rollback();
 		throw new HibernateException("ERROR en la capa de datos", he);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Empleado> traer() {
+		List<Empleado> empleados = null;
+
+		try {
+			iniciarOperacion();
+			empleados = session.createQuery("from Empleado e order by e.idPersona").list();
+		} finally {
+			session.close();
+		}
+
+		return empleados;
 	}
 
 	public int agregar(Empleado empleado) throws HibernateException {

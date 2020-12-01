@@ -6,23 +6,16 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import datos.Cliente;
+import datos.Llamada;
 
-public class ClienteDao {
+public class LlamadaDao {
 
 	private static Session session;
 	private Transaction tx;
-	private static ClienteDao instanciaClienteDao = null;
+	private static LlamadaDao instanciaLlamadaDao = null;
 
-	private ClienteDao() {
-		super();
-	}
+	private LlamadaDao() {
 
-	public static ClienteDao getInstanciaClienteDao() {
-		if (instanciaClienteDao == null) {
-			instanciaClienteDao = new ClienteDao();
-		}
-		return instanciaClienteDao;
 	}
 
 	private void iniciarOperacion() throws HibernateException {
@@ -35,26 +28,34 @@ public class ClienteDao {
 		throw new HibernateException("ERROR en la capa de datos", he);
 	}
 
+	public static LlamadaDao getInstanciaLlamadaDao() {
+		if (instanciaLlamadaDao == null) {
+			instanciaLlamadaDao = new LlamadaDao();
+		}
+
+		return instanciaLlamadaDao;
+	}
+
 	@SuppressWarnings("unchecked")
-	public List<Cliente> traer() {
-		List<Cliente> clientes = null;
+	public List<Llamada> traer() {
+		List<Llamada> llamadas = null;
 
 		try {
 			iniciarOperacion();
-			clientes = session.createQuery("from Cliente c order by c.idPersona").list();
+			llamadas = session.createQuery("from Llamada l order by l.idLlamada").list();
 		} finally {
 			session.close();
 		}
 
-		return clientes;
+		return llamadas;
 	}
 
-	public int agregar(Cliente cliente) throws HibernateException {
-		int idCliente = 0;
+	public int agregar(Llamada l) {
+		int idLlamada = 0;
 
 		try {
 			iniciarOperacion();
-			idCliente = Integer.parseInt(session.save(cliente).toString());
+			idLlamada = Integer.parseInt(session.save(l).toString());
 			tx.commit();
 		} catch (HibernateException he) {
 			manejaException(he);
@@ -63,7 +64,7 @@ public class ClienteDao {
 			session.close();
 		}
 
-		return idCliente;
+		return idLlamada;
 	}
 
 }

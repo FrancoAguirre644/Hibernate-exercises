@@ -1,8 +1,11 @@
 package datos;
 
+import java.util.Set;
+
 public class Cliente extends Persona {
 
 	private boolean activo;
+	private Set<Llamada> llamadas;
 
 	public Cliente() {
 		super();
@@ -19,6 +22,14 @@ public class Cliente extends Persona {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+
+	public Set<Llamada> getLlamadas() {
+		return llamadas;
+	}
+
+	public void setLlamadas(Set<Llamada> llamadas) {
+		this.llamadas = llamadas;
 	}
 
 	@Override

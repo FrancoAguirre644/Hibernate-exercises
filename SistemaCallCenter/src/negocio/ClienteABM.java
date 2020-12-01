@@ -1,5 +1,7 @@
 package negocio;
 
+import java.util.List;
+
 import dao.ClienteDao;
 import dao.PersonaDao;
 import datos.Cliente;
@@ -17,6 +19,10 @@ public class ClienteABM {
 			instanciaClienteABM = new ClienteABM();
 		}
 		return instanciaClienteABM;
+	}
+
+	public List<Cliente> traer() {
+		return ClienteDao.getInstanciaClienteDao().traer();
 	}
 
 	public int agregar(String nombre, String apellido, long dni) throws Exception {

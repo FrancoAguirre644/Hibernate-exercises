@@ -15,5 +15,6 @@
 		<!-- Mapeo Entidades -->
 		<!-- MODIFICAR -->
 		<mapping resource="mapeos/Persona.hbm.xml" />
+		<mapping resource="mapeos/Llamada.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

@@ -13,14 +13,30 @@
 		<property name="dni" column="dni" type="long"></property>
 
 		<joined-subclass name="datos.Cliente" table="cliente">
+
 			<key column="idCliente"></key>
 			<property name="activo" column="activo" type="boolean"></property>
+
+			<set name="llamadas" table="llamada" order-by="idLlamada asc"
+				inverse="true" lazy="true" fetch="select">
+				<key column="idCliente" not-null="true" />
+				<one-to-many class="datos.Llamada" />
+			</set>
+
 		</joined-subclass>
 
 		<joined-subclass name="datos.Empleado"
 			table="empleado">
+			
 			<key column="idEmpleado"></key>
 			<property name="sueldoBase" column="sueldoBase" type="int"></property>
+
+			<set name="llamadas" table="llamada" order-by="idLlamada asc"
+				inverse="true" lazy="true" fetch="select">
+				<key column="idEmpleado" not-null="true" />
+				<one-to-many class="datos.Llamada" />
+			</set>
+
 		</joined-subclass>
 
 	</class>

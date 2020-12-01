@@ -1,8 +1,11 @@
 package datos;
 
+import java.util.Set;
+
 public class Empleado extends Persona {
 
 	private int sueldoBase;
+	private Set<Llamada> llamadas;
 
 	public Empleado() {
 		super();
@@ -19,6 +22,14 @@ public class Empleado extends Persona {
 
 	public void setSueldoBase(int sueldoBase) {
 		this.sueldoBase = sueldoBase;
+	}
+
+	public Set<Llamada> getLlamadas() {
+		return llamadas;
+	}
+
+	public void setLlamadas(Set<Llamada> llamadas) {
+		this.llamadas = llamadas;
 	}
 
 	@Override
