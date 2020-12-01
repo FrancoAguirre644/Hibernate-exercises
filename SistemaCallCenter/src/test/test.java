@@ -11,7 +11,7 @@ import negocio.PersonaABM;
 
 public class test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {/*
 
 		PersonaABM personaABM = PersonaABM.getInstanciaPersonaDao();
 		ClienteABM clienteABM = ClienteABM.getInstanciaClienteABM();
@@ -69,6 +69,8 @@ public class test {
 		empleadoABM.traer().stream().forEach((e) -> {
 			System.out.println(e);
 		});
+		*/		
+		
 
 	}
 
