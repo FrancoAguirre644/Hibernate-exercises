@@ -16,6 +16,12 @@
 		<many-to-one name="carrera" class="datos.Carrera"
 			column="idCarrera" not-null="true" />
 
+		<set name="beneficios" table="beneficio"
+			order-by="idBeneficio asc" inverse="true" lazy="true" fetch="select">
+			<key column="idBeneficio" not-null="true" />
+			<one-to-many class="datos.Beneficio" />
+		</set>
+
 	</class>
 
 </hibernate-mapping>

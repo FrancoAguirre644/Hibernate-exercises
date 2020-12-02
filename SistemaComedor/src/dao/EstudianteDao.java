@@ -84,4 +84,19 @@ public class EstudianteDao {
 		return estudiantes;
 	}
 
+	public Estudiante traer(int dni) {
+
+		Estudiante estudiante = null;
+
+		try {
+			iniciarOperacion();
+			estudiante = (Estudiante) session.createQuery("from Estudiante e where e.dni=" + dni).uniqueResult();
+		} finally {
+			session.close();
+		}
+
+		return estudiante;
+
+	}
+
 }

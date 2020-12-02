@@ -1,5 +1,7 @@
 package datos;
 
+import java.util.Set;
+
 public class Estudiante {
 
 	private int legajo;
@@ -8,6 +10,7 @@ public class Estudiante {
 	private String apellido;
 	private Carrera carrera;
 	private boolean esRegular;
+	private Set<Beneficio> beneficios;
 
 	public Estudiante() {
 		super();
@@ -67,6 +70,14 @@ public class Estudiante {
 
 	public void setEsRegular(boolean esRegular) {
 		this.esRegular = esRegular;
+	}
+
+	public Set<Beneficio> getBeneficios() {
+		return beneficios;
+	}
+
+	public void setBeneficios(Set<Beneficio> beneficios) {
+		this.beneficios = beneficios;
 	}
 
 	@Override

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="datos.TipoBeneficio" table="tipoBeneficio">
+		
+		<id name="idTipoBeneficio" column="idTipoBeneficio">
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="descripcion" column="descripcion" type="string"></property>
+		<property name="horaDesde" column="horaDesde" type="LocalTime"></property>
+		<property name="horaHasta" column="horaHasta" type="LocalTime"></property>
+		<property name="maxDiario" column="maxDiario" type="int"></property>
+		
+		<set name="beneficios" table="beneficio" order-by="idBeneficio asc"
+				inverse="true" lazy="true" fetch="select">
+				<key column="idBeneficio" not-null="true" />
+				<one-to-many class="datos.Beneficio" />
+			</set>
+		
+	</class>
+
+</hibernate-mapping>

@@ -15,5 +15,7 @@
 		<!-- MODIFICAR -->
 		<mapping resource="mapeos/Carrera.hbm.xml" />
 		<mapping resource="mapeos/Estudiante.hbm.xml" />
+		<mapping resource="mapeos/TipoBeneficio.hbm.xml" />
+		<mapping resource="mapeos/Beneficio.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

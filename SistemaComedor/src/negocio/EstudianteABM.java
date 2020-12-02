@@ -34,4 +34,8 @@ public class EstudianteABM {
 		return EstudianteDao.getInstanciaEstudianteDao().traer(regulares);
 	}
 
+	public Estudiante traer(int dni) {
+		return EstudianteDao.getInstanciaEstudianteDao().traer(dni);
+	}
+
 }
