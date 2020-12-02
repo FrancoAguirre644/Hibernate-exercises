@@ -13,13 +13,12 @@ public class Estudiante {
 		super();
 	}
 
-	public Estudiante(int dni, String nombre, String apellido, Carrera carrera, boolean esRegular) {
+	public Estudiante(int dni, String nombre, String apellido, Carrera carrera) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.carrera = carrera;
-		this.esRegular = esRegular;
 	}
 
 	public int getLegajo() {
@@ -73,7 +72,7 @@ public class Estudiante {
 	@Override
 	public String toString() {
 		return "Estudiante [legajo=" + legajo + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", carrera=" + carrera.getDescripcion() + ", esRegular=" + esRegular + "]";
+				+ ", carrera=" + carrera.getIdCarrera() + ", esRegular=" + esRegular + "]";
 	}
 
 }
