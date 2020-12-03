@@ -32,4 +32,24 @@ public class BeneficioABM {
 				.agregar(new Beneficio(tipoBeneficio, estudiante, LocalDate.now()));
 	}
 
+	public List<Beneficio> traer(LocalDate desde, LocalDate hasta) {
+		return BeneficioDao.getInstanciaBeneficioDao().traer(desde, hasta);
+	}
+
+	public List<Beneficio> traer(LocalDate fecha) {
+		return BeneficioDao.getInstanciaBeneficioDao().traer(fecha);
+	}
+
+	public List<Beneficio> traer(TipoBeneficio tipoBeneficio, LocalDate fecha) {
+		return BeneficioDao.getInstanciaBeneficioDao().traer(tipoBeneficio, fecha);
+	}
+
+	public List<Beneficio> traer(Estudiante estudiante, LocalDate fecha) {
+		return BeneficioDao.getInstanciaBeneficioDao().traer(estudiante, fecha);
+	}
+
+	public long cantidadOtorgada(TipoBeneficio tipoBeneficio, LocalDate fecha) {
+		return BeneficioDao.getInstanciaBeneficioDao().cantidadOtorgada(tipoBeneficio, fecha);
+	}
+
 }

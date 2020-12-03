@@ -51,16 +51,45 @@ public class test {
 		System.out.println(TipoBeneficioABM.getInstanciaTipoBeneficioABM().traer(2));
 
 		System.out.println();
-
-		System.out.println(
-				BeneficioABM.getInstanciaCarreraABM().agregar(TipoBeneficioABM.getInstanciaTipoBeneficioABM().traer(1),
-						EstudianteABM.getInstanciaEstudianteABM().traer(403215487), LocalDate.of(2018, 5, 16)));
-		
+		/*
+		 * System.out.println(
+		 * BeneficioABM.getInstanciaCarreraABM().agregar(TipoBeneficioABM.
+		 * getInstanciaTipoBeneficioABM().traer(1),
+		 * EstudianteABM.getInstanciaEstudianteABM().traer(403215487),
+		 * LocalDate.of(2018, 5, 16)));
+		 */
 		System.out.println();
-		
-		BeneficioABM.getInstanciaCarreraABM().traer().stream().forEach((b) -> {
-			System.out.println(b);
-		});
+
+		/*
+		 * BeneficioABM.getInstanciaCarreraABM().traer().stream().forEach((b) -> {
+		 * System.out.println(b); });
+		 * 
+		 * System.out.println();
+		 * 
+		 * BeneficioABM.getInstanciaCarreraABM().traer(LocalDate.of(2000, 8, 10),
+		 * LocalDate.of(2021, 5, 12)).stream() .forEach((b) -> { System.out.println(b);
+		 * });
+		 * 
+		 */
+
+//		BeneficioABM.getInstanciaCarreraABM()
+//				.traer(TipoBeneficioABM.getInstanciaTipoBeneficioABM().traer(1), LocalDate.of(2018, 5, 16)).stream()
+//				.forEach((b) -> {
+//					System.out.println(b);
+//				});
+
+		System.out.println(BeneficioABM.getInstanciaCarreraABM()
+				.traer(EstudianteABM.getInstanciaEstudianteABM().traer(403215487), LocalDate.of(2018, 5, 16)));
+
+		System.out.println();
+
+		System.out.println(BeneficioABM.getInstanciaCarreraABM()
+				.cantidadOtorgada(TipoBeneficioABM.getInstanciaTipoBeneficioABM().traer(1), LocalDate.of(2018, 5, 16)));
+
+		System.out.println();
+
+		System.out.println(BeneficioABM.getInstanciaCarreraABM()
+				.cantidadOtorgada(TipoBeneficioABM.getInstanciaTipoBeneficioABM().traer(1), LocalDate.of(2018, 5, 16)));
 
 	}
 
