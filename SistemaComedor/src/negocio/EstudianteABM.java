@@ -38,4 +38,8 @@ public class EstudianteABM {
 		return EstudianteDao.getInstanciaEstudianteDao().traer(dni);
 	}
 
+	public void actualizar(Estudiante estudiante) {
+		EstudianteDao.getInstanciaEstudianteDao().actualizar(estudiante);
+	}
+
 }

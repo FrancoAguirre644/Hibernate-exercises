@@ -12,7 +12,7 @@ public class BeneficioABM {
 
 	private static BeneficioABM instanciaBeneficioABM = null;
 
-	public static BeneficioABM getInstanciaCarreraABM() {
+	public static BeneficioABM getInstanciaBeneficioABM() {
 		if (instanciaBeneficioABM == null) {
 			instanciaBeneficioABM = new BeneficioABM();
 		}
@@ -23,7 +23,19 @@ public class BeneficioABM {
 		return BeneficioDao.getInstanciaBeneficioDao().traer();
 	}
 
-	public int agregar(TipoBeneficio tipoBeneficio, Estudiante estudiante, LocalDate fecha) {
+	public int agregar(TipoBeneficio tipoBeneficio, Estudiante estudiante, LocalDate fecha) throws Exception {
+
+		if (!estudiante.getEsRegular())
+			throw new Exception(
+					estudiante.getApellido() + " " + estudiante.getNombre() + " no es un estudiante regular");
+
+		if (tipoBeneficio.getMaxDiario() == cantidadOtorgada(tipoBeneficio, fecha))
+			throw new Exception("Se han agotado la cant. de beneficios de " + tipoBeneficio.getDescripcion());
+
+		if (cantidadOtorgada(estudiante, fecha) == 2)
+			throw new Exception("cantidad de beneficios diarios alcanzado para " + estudiante.getApellido() + " "
+					+ estudiante.getNombre());
+
 		return BeneficioDao.getInstanciaBeneficioDao().agregar(new Beneficio(tipoBeneficio, estudiante, fecha));
 	}
 
@@ -50,6 +62,10 @@ public class BeneficioABM {
 
 	public long cantidadOtorgada(TipoBeneficio tipoBeneficio, LocalDate fecha) {
 		return BeneficioDao.getInstanciaBeneficioDao().cantidadOtorgada(tipoBeneficio, fecha);
+	}
+
+	public long cantidadOtorgada(Estudiante estudiante, LocalDate fecha) {
+		return BeneficioDao.getInstanciaBeneficioDao().cantidadOtorgada(estudiante, fecha);
 	}
 
 }

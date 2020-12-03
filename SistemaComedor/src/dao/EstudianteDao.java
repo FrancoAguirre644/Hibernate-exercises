@@ -99,4 +99,19 @@ public class EstudianteDao {
 
 	}
 
+	public void actualizar(Estudiante estudiante) throws HibernateException {
+
+		try {
+			iniciarOperacion();
+			session.update(estudiante);
+			tx.commit();
+		} catch (HibernateException he) {
+			manejaException(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+
+	}
+
 }

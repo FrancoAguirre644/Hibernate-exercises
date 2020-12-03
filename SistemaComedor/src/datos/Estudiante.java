@@ -22,6 +22,7 @@ public class Estudiante {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.carrera = carrera;
+		this.esRegular = true;
 	}
 
 	public int getLegajo() {

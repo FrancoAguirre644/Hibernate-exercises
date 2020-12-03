@@ -29,7 +29,9 @@ public class TipoBeneficioABM {
 	public TipoBeneficio traer(int idTipoBeneficio) {
 		return TipoBeneficioDao.getInstanciaTipoBeneficioDao().traer(idTipoBeneficio);
 	}
-	
-	
+
+	public void actualizar(TipoBeneficio tipoBeneficio) {
+		TipoBeneficioDao.getInstanciaTipoBeneficioDao().actualizar(tipoBeneficio);
+	}
 
 }

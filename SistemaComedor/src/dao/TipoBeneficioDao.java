@@ -81,4 +81,19 @@ public class TipoBeneficioDao {
 		return tiposBeneficios;
 	}
 
+	public void actualizar(TipoBeneficio tipoBeneficio) throws HibernateException {
+
+		try {
+			iniciarOperacion();
+			session.update(tipoBeneficio);
+			tx.commit();
+		} catch (HibernateException he) {
+			manejaException(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+
+	}
+
 }
