@@ -1,6 +1,7 @@
 package datos;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 public class Pedido {
 
@@ -8,16 +9,17 @@ public class Pedido {
 	protected LocalDate fechaCreacion;
 	protected Area area;
 	protected boolean abierto;
+	protected Set<ItemPedido> itemPedidos;
 
 	public Pedido() {
 		super();
 	}
 
-	public Pedido(LocalDate fechaCreacion, Area area, boolean abierto) {
+	public Pedido(LocalDate fechaCreacion, Area area) {
 		super();
 		this.fechaCreacion = fechaCreacion;
 		this.area = area;
-		this.abierto = abierto;
+		this.abierto = true;
 	}
 
 	public int getIdPedido() {
@@ -51,8 +53,14 @@ public class Pedido {
 	public void setArea(Area area) {
 		this.area = area;
 	}
-	
-	
+
+	public Set<ItemPedido> getItemPedidos() {
+		return itemPedidos;
+	}
+
+	public void setItemPedidos(Set<ItemPedido> itemPedidos) {
+		this.itemPedidos = itemPedidos;
+	}
 
 	@Override
 	public String toString() {

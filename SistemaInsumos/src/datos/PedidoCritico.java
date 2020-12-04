@@ -11,9 +11,8 @@ public class PedidoCritico extends Pedido {
 		super();
 	}
 
-	public PedidoCritico(LocalDate fechaCreacion, Area area, boolean abierto, String motivo,
-			double porcentajeExtra) {
-		super(fechaCreacion, area, abierto);
+	public PedidoCritico(LocalDate fechaCreacion, Area area, String motivo, double porcentajeExtra) {
+		super(fechaCreacion, area);
 		this.motivo = motivo;
 		this.porcentajeExtra = porcentajeExtra;
 	}

@@ -16,5 +16,7 @@
 		<!-- MODIFICAR -->
 		<mapping resource="mapeos/Pedido.hbm.xml" />
 		<mapping resource="mapeos/Area.hbm.xml" />
+		<mapping resource="mapeos/Insumo.hbm.xml" />
+		<mapping resource="mapeos/ItemPedido.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

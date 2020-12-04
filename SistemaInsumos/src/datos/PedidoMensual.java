@@ -10,8 +10,8 @@ public class PedidoMensual extends Pedido {
 		super();
 	}
 
-	public PedidoMensual(LocalDate fechaCreacion, Area area, boolean abierto, LocalDate fechaEntrega) {
-		super(fechaCreacion, area, abierto);
+	public PedidoMensual(LocalDate fechaCreacion, Area area, LocalDate fechaEntrega) {
+		super(fechaCreacion, area);
 		this.fechaEntrega = fechaEntrega;
 	}
 

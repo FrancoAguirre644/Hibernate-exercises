@@ -13,6 +13,12 @@
 		
 		<many-to-one name="area" class="datos.Area"
 			column="idArea" not-null="true" />
+			
+		<set name="itemPedidos" table="itempedido"
+			order-by="idItemPedido asc" inverse="true" lazy="true" fetch="select">
+			<key column="idItemPedido" not-null="true" />
+			<one-to-many class="datos.ItemPedido" />
+		</set>
 		
 		<joined-subclass name="datos.PedidoMensual" table="pedidoMensual">
 		

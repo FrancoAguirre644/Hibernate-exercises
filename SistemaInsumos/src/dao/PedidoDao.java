@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Pedido;
+import datos.PedidoCritico;
+import datos.PedidoMensual;
 
 public class PedidoDao {
 
@@ -49,7 +51,50 @@ public class PedidoDao {
 
 		return pedidos;
 	}
-	
-	
+
+	public Pedido traer(int idPedido) {
+		Pedido pedido = null;
+
+		try {
+			iniciarOperacion();
+			pedido = (Pedido) session.createQuery("from Pedido p where p.idPedido=" + idPedido).uniqueResult();
+		} finally {
+			session.close();
+		}
+
+		return pedido;
+	}
+
+	public int agregar(PedidoMensual p) throws HibernateException {
+		int idPedido = 0;
+
+		try {
+			iniciarOperacion();
+			idPedido = Integer.parseInt(session.save(p).toString());
+		} catch (HibernateException he) {
+			manejaException(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+
+		return idPedido;
+	}
+
+	public int agregar(PedidoCritico p) throws HibernateException {
+		int idPedido = 0;
+
+		try {
+			iniciarOperacion();
+			idPedido = Integer.parseInt(session.save(p).toString());
+		} catch (HibernateException he) {
+			manejaException(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+
+		return idPedido;
+	}
 
 }

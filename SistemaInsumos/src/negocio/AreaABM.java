@@ -25,7 +25,15 @@ public class AreaABM {
 		return AreaDao.getInstanciaPedidoDao().traer();
 	}
 
-	public int agregar(String nombre) {
+	public Area traer(String nombre) {
+		return AreaDao.getInstanciaPedidoDao().traer(nombre);
+	}
+
+	public int agregar(String nombre) throws Exception {
+
+		if (traer(nombre) != null)
+			throw new Exception("Area ya registrada!");
+		
 		return AreaDao.getInstanciaPedidoDao().agregar(new Area(nombre));
 	}
 

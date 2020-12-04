@@ -7,24 +7,24 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import datos.Area;
+import datos.Insumo;
 
-public class AreaDao {
+public class InsumoDao {
 
 	private static Session session;
 	private Transaction tx;
-	private static AreaDao instanciaAreaDao = null;
+	private static InsumoDao instanciaInsumoDao = null;
 
-	private AreaDao() {
+	private InsumoDao() {
 		super();
 	}
 
-	public static AreaDao getInstanciaPedidoDao() {
-		if (instanciaAreaDao == null) {
-			instanciaAreaDao = new AreaDao();
+	public static InsumoDao getInstanciaInsumoDao() {
+		if (instanciaInsumoDao == null) {
+			instanciaInsumoDao = new InsumoDao();
 		}
 
-		return instanciaAreaDao;
+		return instanciaInsumoDao;
 	}
 
 	private void iniciarOperacion() throws HibernateException {
@@ -38,40 +38,40 @@ public class AreaDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Area> traer() {
-		List<Area> areas = null;
+	public List<Insumo> traer() {
+		List<Insumo> insumos = null;
 
 		try {
 			iniciarOperacion();
-			areas = session.createQuery("from Area a order by a.idArea").list();
+			insumos = session.createQuery("from Insumo").list();
 		} finally {
 			session.close();
 		}
 
-		return areas;
+		return insumos;
 	}
 
-	public Area traer(String nombre) {
-		Area area = null;
+	public Insumo traer(String nombre) {
+		Insumo insumo = null;
 
 		try {
 			iniciarOperacion();
-			Query query = session.createQuery("from Area a where a.nombre= :nombre");
+			Query query = session.createQuery("from Insumo i where i.nombre= :nombre");
 			query.setParameter("nombre", nombre);
-			area = (Area) query.uniqueResult();
+			insumo = (Insumo) query.uniqueResult();
 		} finally {
 			session.close();
 		}
 
-		return area;
+		return insumo;
 	}
 
-	public int agregar(Area a) throws HibernateException {
-		int idArea = 0;
+	public int agregar(Insumo insumo) throws HibernateException {
+		int idInsumo = 0;
 
 		try {
 			iniciarOperacion();
-			idArea = Integer.parseInt(session.save(a).toString());
+			idInsumo = Integer.parseInt(session.save(insumo).toString());
 			tx.commit();
 		} catch (HibernateException he) {
 			manejaException(he);
@@ -80,7 +80,7 @@ public class AreaDao {
 			session.close();
 		}
 
-		return idArea;
+		return idInsumo;
 	}
 
 }
