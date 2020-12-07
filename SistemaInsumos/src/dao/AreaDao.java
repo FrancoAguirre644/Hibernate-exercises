@@ -60,7 +60,10 @@ public class AreaDao {
 			Query query = session.createQuery("from Area a where a.nombre= :nombre");
 			query.setParameter("nombre", nombre);
 			area = (Area) query.uniqueResult();
-			Hibernate.initialize(area.getPedidos());
+
+			if (area != null)
+				Hibernate.initialize(area.getPedidos());
+
 		} finally {
 			session.close();
 		}

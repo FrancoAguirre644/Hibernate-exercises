@@ -59,7 +59,10 @@ public class PedidoDao {
 		try {
 			iniciarOperacion();
 			pedido = (Pedido) session.createQuery("from Pedido p where p.idPedido=" + idPedido).uniqueResult();
-			Hibernate.initialize(pedido.getItemPedidos());
+
+			if (pedido != null)
+				Hibernate.initialize(pedido.getItemPedidos());
+
 		} finally {
 			session.close();
 		}

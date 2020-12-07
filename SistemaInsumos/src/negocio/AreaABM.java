@@ -30,7 +30,7 @@ public class AreaABM {
 	}
 
 	public int agregar(String nombre) throws Exception {
-
+		
 		if (traer(nombre) != null)
 			throw new Exception("Area ya registrada!");
 		
