@@ -2,8 +2,6 @@ package negocio;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
-
 import dao.ItemPedidoDao;
 import datos.Insumo;
 import datos.ItemPedido;
