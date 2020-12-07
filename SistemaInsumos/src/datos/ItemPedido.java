@@ -50,9 +50,14 @@ public class ItemPedido {
 		this.pedido = pedido;
 	}
 
+	public double calcularSubTotal() {
+		return insumo.getPrecioUnitario() * cantidad;
+	}
+
 	@Override
 	public String toString() {
-		return "ItemPedido [idItemPedido=" + idItemPedido + ", insumo=" + insumo + ", cantidad=" + cantidad + "]";
+		return "ItemPedido [idItemPedido=" + idItemPedido + ", insumo=" + insumo.getIdInsumo() + ", cantidad="
+				+ cantidad + ", pedido=" + pedido.getIdPedido() + "]";
 	}
 
 }

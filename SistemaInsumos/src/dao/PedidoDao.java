@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -58,6 +59,7 @@ public class PedidoDao {
 		try {
 			iniciarOperacion();
 			pedido = (Pedido) session.createQuery("from Pedido p where p.idPedido=" + idPedido).uniqueResult();
+			Hibernate.initialize(pedido.getItemPedidos());
 		} finally {
 			session.close();
 		}
@@ -95,6 +97,20 @@ public class PedidoDao {
 		}
 
 		return idPedido;
+	}
+
+	public void actualizar(Pedido p) throws HibernateException {
+
+		try {
+			iniciarOperacion();
+			session.update(p);
+			tx.commit();
+		} catch (HibernateException he) {
+			manejaException(he);
+			throw he;
+		} finally {
+			session.close();
+		}
 	}
 
 }

@@ -14,8 +14,8 @@
 		<property name="maxDiario" column="maxDiario" type="int"></property>
 		
 		<set name="beneficios" table="beneficio" order-by="idBeneficio asc"
-				inverse="true" lazy="true" fetch="select">
-				<key column="idBeneficio" not-null="true" />
+				inverse="true" lazy="false" fetch="select">
+				<key column="idTipoBeneficio" not-null="true" />
 				<one-to-many class="datos.Beneficio" />
 			</set>
 		

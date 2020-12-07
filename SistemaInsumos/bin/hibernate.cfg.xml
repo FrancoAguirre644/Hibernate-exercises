@@ -6,6 +6,7 @@
 		</property>
 		<!-- MODIFICAR -->
 		<property name="connection.username">root</property>
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
 		<!-- MODIFICAR -->
 		<property name="connection.password"></property>
 		<property name="connection.pool_size">1</property>

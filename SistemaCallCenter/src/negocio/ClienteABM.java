@@ -25,6 +25,10 @@ public class ClienteABM {
 		return ClienteDao.getInstanciaClienteDao().traer();
 	}
 
+	public Cliente traer(long id) {
+		return ClienteDao.getInstanciaClienteDao().traer(id);
+	}
+
 	public int agregar(String nombre, String apellido, long dni) throws Exception {
 		if (PersonaDao.getInstanciaPersonaDao().traer(dni) != null)
 			throw new Exception("Cliente ya registrado!");

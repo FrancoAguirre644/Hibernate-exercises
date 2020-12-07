@@ -2,11 +2,13 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Cliente;
+import datos.Persona;
 
 public class ClienteDao {
 
@@ -47,6 +49,20 @@ public class ClienteDao {
 		}
 
 		return clientes;
+	}
+	
+	public Cliente traer(long id) {
+		Cliente cliente = null;
+
+		try {
+			iniciarOperacion();
+			cliente = (Cliente) session.createQuery("from Cliente c where c.idPersona=" + id).uniqueResult();
+			Hibernate.initialize(cliente.getLlamadas());
+		} finally {
+			session.close();
+		}
+
+		return cliente;
 	}
 
 	public int agregar(Cliente cliente) throws HibernateException {

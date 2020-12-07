@@ -62,10 +62,21 @@ public class Pedido {
 		this.itemPedidos = itemPedidos;
 	}
 
+	public double calcularTotal() {
+
+		double total = 0;
+
+		for (ItemPedido i : itemPedidos) {
+			total += i.calcularSubTotal();
+		}
+
+		return total;
+	}
+
 	@Override
 	public String toString() {
-		return "Pedido [idPedido=" + idPedido + ", fechaCreacion=" + fechaCreacion + ", area=" + area + ", abierto="
-				+ abierto + "]";
+		return "Pedido [idPedido=" + idPedido + ", fechaCreacion=" + fechaCreacion + ", area=" + area.getIdArea()
+				+ ", abierto=" + abierto + ", itemPedidos=" + itemPedidos + "]";
 	}
 
 }

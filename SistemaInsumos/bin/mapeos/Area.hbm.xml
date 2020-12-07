@@ -12,7 +12,7 @@
 		
 		<set name="pedidos" table="pedido"
 			order-by="idPedido asc" inverse="true" lazy="true" fetch="select">
-			<key column="idPedido" not-null="true" />
+			<key column="idArea" not-null="true" />
 			<one-to-many class="datos.Pedido" />
 		</set>
 

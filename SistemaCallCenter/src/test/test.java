@@ -71,6 +71,10 @@ public class test {
 		});
 		*/		
 		
+		
+		System.out.println(ClienteABM.getInstanciaClienteABM().traer(7).getLlamadas());
+		
+		System.out.println(LlamadaABM.getInstanciaLlamadaABM().traer());
 
 	}
 

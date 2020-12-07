@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -59,6 +60,7 @@ public class AreaDao {
 			Query query = session.createQuery("from Area a where a.nombre= :nombre");
 			query.setParameter("nombre", nombre);
 			area = (Area) query.uniqueResult();
+			Hibernate.initialize(area.getPedidos());
 		} finally {
 			session.close();
 		}

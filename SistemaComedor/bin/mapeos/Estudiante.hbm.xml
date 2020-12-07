@@ -17,8 +17,8 @@
 			column="idCarrera" not-null="true" />
 
 		<set name="beneficios" table="beneficio"
-			order-by="idBeneficio asc" inverse="true" lazy="true" fetch="select">
-			<key column="idBeneficio" not-null="true" />
+			order-by="idBeneficio asc" inverse="true" lazy="false" fetch="select">
+			<key column="legajo" not-null="true" />
 			<one-to-many class="datos.Beneficio" />
 		</set>
 

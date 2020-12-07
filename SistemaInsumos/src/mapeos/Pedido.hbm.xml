@@ -16,7 +16,7 @@
 			
 		<set name="itemPedidos" table="itempedido"
 			order-by="idItemPedido asc" inverse="true" lazy="true" fetch="select">
-			<key column="idItemPedido" not-null="true" />
+			<key column="idPedido" not-null="true" />
 			<one-to-many class="datos.ItemPedido" />
 		</set>
 		

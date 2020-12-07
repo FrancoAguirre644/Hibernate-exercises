@@ -12,7 +12,7 @@
 		
 		<set name="estudiantes" table="estudiante" order-by="legajo asc"
 				inverse="true" lazy="true" fetch="select">
-				<key column="legajo" not-null="true" />
+				<key column="idCarrera" not-null="true" />
 				<one-to-many class="datos.Estudiante" />
 			</set>
 		
