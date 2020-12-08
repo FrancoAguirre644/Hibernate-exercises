@@ -28,7 +28,7 @@ public class LlamadaABM {
 		return LlamadaDao.getInstanciaLlamadaDao().traer();
 	}
 
-	public int agregar(Cliente cliente, Empleado empleado, LocalDate fecha, int nivelDeSatisfaccion) throws Exception {
+	public int agregar(LocalDate fecha, int nivelDeSatisfaccion, Cliente cliente, Empleado empleado) throws Exception {
 		if (!validarNivelDeSatisfaccion(nivelDeSatisfaccion))
 			throw new Exception("El nivel de Satisfaccion no es valido!");
 

@@ -11,70 +11,143 @@ import negocio.PersonaABM;
 
 public class test {
 
-	public static void main(String[] args) {/*
+	public static void main(String[] args) {
 
-		PersonaABM personaABM = PersonaABM.getInstanciaPersonaDao();
-		ClienteABM clienteABM = ClienteABM.getInstanciaClienteABM();
 		EmpleadoABM empleadoABM = EmpleadoABM.getInstanciaEmpleadoABM();
+		ClienteABM clienteABM = ClienteABM.getInstanciaClienteABM();
 		LlamadaABM llamadaABM = LlamadaABM.getInstanciaLlamadaABM();
 
-		personaABM.traer().stream().forEach((p) -> {
-			System.out.println(p);
-		});
-
-		System.out.println();
-
-		System.out.println(personaABM.traer(11111111));
-
 		try {
-			clienteABM.agregar("Franco", "Aguirre", 11111112);
+			empleadoABM.agregar("Lopez", "Luis", 33333333, 10000);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		System.out.println();
-
 		try {
-			empleadoABM.agregar("Martin", "Garcia", 33333332, 4000);
+			empleadoABM.agregar("Gomes", "Lucas", 44444444, 9000);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		System.out.println();
-
-		llamadaABM.traer().stream().forEach((l) -> {
-			System.out.println(l);
-		});
-
-		System.out.println();
-
 		try {
-			System.out.println(LlamadaABM.getInstanciaLlamadaABM().agregar((Cliente) personaABM.traer(11111112),
-					(Empleado) personaABM.traer(33333332), LocalDate.now(), 8));
+			clienteABM.agregar("Perez", "Pedro", 11111111);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		System.out.println();
+		try {
+			clienteABM.agregar("Pereyra", "Pablo", 22222222);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		clienteABM.traer().stream().forEach((c) -> {
+		for (Cliente c : clienteABM.traer()) {
 			System.out.println(c);
-		});
+		}
 
 		System.out.println();
 
-		empleadoABM.traer().stream().forEach((e) -> {
+		for (Empleado e : empleadoABM.traer()) {
 			System.out.println(e);
-		});
-		*/		
-		
-		
-		System.out.println(ClienteABM.getInstanciaClienteABM().traer(7).getLlamadas());
-		
-		System.out.println(LlamadaABM.getInstanciaLlamadaABM().traer());
+		}
+
+		System.out.println();
+
+		System.out.println(PersonaABM.getInstanciaPersonaABM().traer(11111111));
+
+		System.out.println();
+
+		System.out.println(PersonaABM.getInstanciaPersonaABM().traer(33333333));
+
+		try {
+			clienteABM.agregar("Rios", "Marcos", 22222222);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			empleadoABM.agregar("Martinez", "Miguel", 44444444, 9500);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			llamadaABM.agregar(LocalDate.of(2019, 12, 1), 5,
+					(Cliente) PersonaABM.getInstanciaPersonaABM().traer(11111111),
+					(Empleado) PersonaABM.getInstanciaPersonaABM().traer(33333333));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			llamadaABM.agregar(LocalDate.of(2019, 12, 1), 5,
+					(Cliente) PersonaABM.getInstanciaPersonaABM().traer(11111111),
+					(Empleado) PersonaABM.getInstanciaPersonaABM().traer(44444444));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			llamadaABM.agregar(LocalDate.of(2019, 12, 1), 5,
+					(Cliente) PersonaABM.getInstanciaPersonaABM().traer(22222222),
+					(Empleado) PersonaABM.getInstanciaPersonaABM().traer(33333333));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			llamadaABM.agregar(LocalDate.of(2019, 12, 2), 4,
+					(Cliente) PersonaABM.getInstanciaPersonaABM().traer(11111111),
+					(Empleado) PersonaABM.getInstanciaPersonaABM().traer(33333333));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			llamadaABM.agregar(LocalDate.of(2019, 12, 2), 3,
+					(Cliente) PersonaABM.getInstanciaPersonaABM().traer(11111111),
+					(Empleado) PersonaABM.getInstanciaPersonaABM().traer(33333333));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			llamadaABM.agregar(LocalDate.of(2019, 12, 2), 2,
+					(Cliente) PersonaABM.getInstanciaPersonaABM().traer(11111111),
+					(Empleado) PersonaABM.getInstanciaPersonaABM().traer(33333333));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			llamadaABM.agregar(LocalDate.of(2019, 12, 3), 5,
+					(Cliente) PersonaABM.getInstanciaPersonaABM().traer(11111111),
+					(Empleado) PersonaABM.getInstanciaPersonaABM().traer(33333333));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			llamadaABM.agregar(LocalDate.of(2019, 12, 1), 6,
+					(Cliente) PersonaABM.getInstanciaPersonaABM().traer(11111111),
+					(Empleado) PersonaABM.getInstanciaPersonaABM().traer(33333333));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

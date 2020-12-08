@@ -13,7 +13,7 @@ public class PersonaABM {
 		super();
 	}
 
-	public static PersonaABM getInstanciaPersonaDao() {
+	public static PersonaABM getInstanciaPersonaABM() {
 		if (instanciaPersonaABM == null) {
 			instanciaPersonaABM = new PersonaABM();
 		}
