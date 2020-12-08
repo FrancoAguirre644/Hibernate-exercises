@@ -1,5 +1,7 @@
 package datos;
 
+import java.util.Set;
+
 public class Producto {
 
 	private int idProducto;
@@ -7,14 +9,14 @@ public class Producto {
 	private double precio;
 	private String unidadMedida;
 	private double pesosPorKms;
+	private Set<Compra> compras;
 
 	public Producto() {
 		super();
 	}
 
-	public Producto(int idProducto, String nombre, double precio, String unidadMedida, double pesosPorKms) {
+	public Producto(String nombre, double precio, String unidadMedida, double pesosPorKms) {
 		super();
-		this.idProducto = idProducto;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.unidadMedida = unidadMedida;
@@ -59,6 +61,14 @@ public class Producto {
 
 	public void setPesosPorKms(double pesosPorKms) {
 		this.pesosPorKms = pesosPorKms;
+	}
+
+	public Set<Compra> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(Set<Compra> compras) {
+		this.compras = compras;
 	}
 
 	@Override

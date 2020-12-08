@@ -50,4 +50,47 @@ public class ClienteDao {
 		return clientes;
 	}
 
+	public Cliente traer(long dni) {
+		Cliente c = null;
+
+		try {
+			iniciarOperacion();
+			c = (Cliente) session.createQuery("from Cliente c where c.dni=" + dni).list();
+		} finally {
+			session.close();
+		}
+
+		return c;
+	}
+
+	public Cliente traer(int idCliente) {
+		Cliente c = null;
+
+		try {
+			iniciarOperacion();
+			c = (Cliente) session.createQuery("from Cliente c where c.idCliente=" + idCliente).list();
+		} finally {
+			session.close();
+		}
+
+		return c;
+	}
+
+	public int agregar(Cliente c) throws HibernateException {
+		int idCliente = 0;
+
+		try {
+			iniciarOperacion();
+			idCliente = Integer.parseInt(session.save(c).toString());
+			tx.commit();
+		} catch (HibernateException he) {
+			manejaException(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+
+		return idCliente;
+	}
+
 }

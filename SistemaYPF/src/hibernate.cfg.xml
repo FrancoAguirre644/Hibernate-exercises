@@ -17,5 +17,7 @@
 		<!-- MODIFICAR -->
 		<mapping resource="mapeos/Cliente.hbm.xml" />
 		<mapping resource="mapeos/Tarjeta.hbm.xml" />
+		<mapping resource="mapeos/Producto.hbm.xml" />
+		<mapping resource="mapeos/Compra.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
