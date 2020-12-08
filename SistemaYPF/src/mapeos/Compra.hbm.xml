@@ -9,11 +9,13 @@
 		</id>
 
 		<property column="fecha" name="fecha" type="LocalDate" />
-		<property column="cantidad" name="cantidad" type="int" />
+		<property column="cantidad" name="cantidad" type="double" />
 
 		<many-to-one name="producto" class="datos.Producto"
 			column="idProducto" not-null="true" />
-
+		
+		<many-to-one name="tarjeta" class="datos.Tarjeta"
+			column="idTarjeta" not-null="true" />
 
 	</class>
 

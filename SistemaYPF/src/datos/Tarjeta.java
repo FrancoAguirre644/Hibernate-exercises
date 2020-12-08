@@ -1,10 +1,13 @@
 package datos;
 
+import java.util.Set;
+
 public class Tarjeta {
 
 	private int idTarjeta;
 	private int kilometros;
 	private Cliente cliente;
+	private Set<Compra> compras;
 
 	public Tarjeta() {
 		super();
@@ -40,9 +43,20 @@ public class Tarjeta {
 		this.cliente = cliente;
 	}
 
+	public Set<Compra> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(Set<Compra> compras) {
+		this.compras = compras;
+	}
+
 	@Override
 	public String toString() {
-		return "Tarjeta [idTarjeta=" + idTarjeta + ", kilometros=" + kilometros + ", cliente=" + cliente + "]";
+		return "Tarjeta [idTarjeta=" + idTarjeta + ", kilometros=" + kilometros + ", cliente=" + cliente.getApellido() + ", compras="
+				+ compras + "]";
 	}
+
+	
 
 }

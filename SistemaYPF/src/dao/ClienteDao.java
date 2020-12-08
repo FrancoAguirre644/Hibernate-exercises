@@ -55,7 +55,7 @@ public class ClienteDao {
 
 		try {
 			iniciarOperacion();
-			c = (Cliente) session.createQuery("from Cliente c where c.dni=" + dni).list();
+			c = (Cliente) session.createQuery("from Cliente c where c.dni=" + dni).uniqueResult();
 		} finally {
 			session.close();
 		}
@@ -68,7 +68,7 @@ public class ClienteDao {
 
 		try {
 			iniciarOperacion();
-			c = (Cliente) session.createQuery("from Cliente c where c.idCliente=" + idCliente).list();
+			c = (Cliente) session.createQuery("from Cliente c where c.idCliente=" + idCliente).uniqueResult();
 		} finally {
 			session.close();
 		}

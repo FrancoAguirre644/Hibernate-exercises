@@ -7,17 +7,19 @@ public class Compra {
 	private int idCompra;
 	private LocalDate fecha;
 	private Producto producto;
+	private Tarjeta tarjeta;
 	private double cantidad;
 
 	public Compra() {
 		super();
 	}
 
-	public Compra(LocalDate fecha, Producto producto, double cantidad) {
+	public Compra(LocalDate fecha, Producto producto, double cantidad, Tarjeta tarjeta) {
 		super();
 		this.fecha = fecha;
 		this.producto = producto;
 		this.cantidad = cantidad;
+		this.tarjeta = tarjeta;
 	}
 
 	public int getIdCompra() {
@@ -52,9 +54,20 @@ public class Compra {
 		this.cantidad = cantidad;
 	}
 
+	public Tarjeta getTarjeta() {
+		return tarjeta;
+	}
+
+	public void setTarjeta(Tarjeta tarjeta) {
+		this.tarjeta = tarjeta;
+	}
+
 	@Override
 	public String toString() {
-		return "Compra [idCompra=" + idCompra + ", fecha=" + fecha + ", cantidad=" + cantidad + "]";
+		return "Compra [idCompra=" + idCompra + ", fecha=" + fecha + ", producto=" + producto + ", tarjeta=" + tarjeta.getIdTarjeta()
+				+ ", cantidad=" + cantidad + "]";
 	}
+
+	
 
 }

@@ -13,6 +13,12 @@
 		<property name="kilometros" column="kilometros" type="int"></property>
 
 		<one-to-one name="cliente" class="datos.Cliente"></one-to-one>
+		
+		<set name="compras" table="compra"
+			order-by="idCompra asc" inverse="true" lazy="false" fetch="select">
+			<key column="idTarjeta" not-null="true" />
+			<one-to-many class="datos.Compra" />
+		</set>
 
 	</class>
 

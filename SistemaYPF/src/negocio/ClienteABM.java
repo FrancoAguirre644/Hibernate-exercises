@@ -33,7 +33,11 @@ public class ClienteABM {
 		return ClienteDao.getInstanciaClienteDao().traer(idCliente);
 	}
 
-	public int agregar(String nombre, String apellido, String email, long dni) {
+	public int agregar(String nombre, String apellido, String email, long dni) throws Exception {
+
+		if (traer(dni) != null)
+			throw new Exception("Cliente ya existente!");
+
 		return ClienteDao.getInstanciaClienteDao().agregar(new Cliente(nombre, apellido, email, dni));
 	}
 

@@ -56,7 +56,7 @@ public class ProductoDao {
 
 		try {
 			iniciarOperacion();
-			Query query = session.createQuery("from Producto where p.nombre= :nombre");
+			Query query = session.createQuery("from Producto p where p.nombre= :nombre");
 			query.setParameter("nombre", nombre);
 			producto = (Producto) query.uniqueResult();
 		} finally {
