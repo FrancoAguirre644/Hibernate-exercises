@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import datos.Cliente;
-import datos.Persona;
 
 public class ClienteDao {
 
@@ -50,7 +49,7 @@ public class ClienteDao {
 
 		return clientes;
 	}
-	
+
 	public Cliente traer(long id) {
 		Cliente cliente = null;
 

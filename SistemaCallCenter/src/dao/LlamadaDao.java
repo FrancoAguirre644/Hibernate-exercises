@@ -1,11 +1,14 @@
 package dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import datos.Empleado;
 import datos.Llamada;
 
 public class LlamadaDao {
@@ -65,6 +68,78 @@ public class LlamadaDao {
 		}
 
 		return idLlamada;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Llamada> traer(LocalDate desde, LocalDate hasta) {
+		List<Llamada> llamadas = null;
+
+		try {
+			iniciarOperacion();
+			Query query = session.createQuery("from Llamada l where l.fecha between :desde and :hasta");
+			query.setParameter("desde", desde);
+			query.setParameter("hasta", hasta);
+			llamadas = query.list();
+		} finally {
+			session.close();
+		}
+
+		return llamadas;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Llamada> traer(LocalDate desde, LocalDate hasta, int nivelDeSatisfaccion) {
+		List<Llamada> llamadas = null;
+
+		try {
+			iniciarOperacion();
+			Query query = session.createQuery(
+					"from Llamada l where l.fecha between :desde and :hasta and l.nivelSatisfaccion= :nivelDeSatisfaccion");
+			query.setParameter("desde", desde);
+			query.setParameter("hasta", hasta);
+			query.setParameter("nivelDeSatisfaccion", nivelDeSatisfaccion);
+			llamadas = query.list();
+		} finally {
+			session.close();
+		}
+
+		return llamadas;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Llamada> traer(LocalDate desde, LocalDate hasta, int nivelDeSatisfaccion, Empleado empleado) {
+		List<Llamada> llamadas = null;
+
+		try {
+			iniciarOperacion();
+			Query query = session.createQuery(
+					"from Llamada l where l.fecha between :desde and :hasta and l.nivelSatisfaccion= :nivelDeSatisfaccion and l.empleado.idPersona = :idPersona");
+			query.setParameter("desde", desde);
+			query.setParameter("hasta", hasta);
+			query.setParameter("nivelDeSatisfaccion", nivelDeSatisfaccion);
+			query.setParameter("idPersona", empleado.getIdPersona());
+			llamadas = query.list();
+		} finally {
+			session.close();
+		}
+
+		return llamadas;
+
+	}
+
+	public long calcularTotalNivelDeSatifaccion() {
+		long total = 0;
+
+		try {
+			iniciarOperacion();
+			total = (long) session.createQuery("select sum(l.nivelSatisfaccion) from Llamada l").uniqueResult();
+		} finally {
+			session.close();
+		}
+
+		return total;
 	}
 
 }
